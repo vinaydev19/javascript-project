@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>notes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <h1>Notes</h1>
+        </nav>
+      </header>
+      <section class="AddNewNotes">
+        <div class="addNewNoteBtn">
+          <button id="openpopupbox">New Note</button>
+        </div>
+        <div class="searchBtn">
+          <form action="">
+            <input type="text" id="searchNotes" placeholder="Search..." />
+            <button type="submit">search</button>
+          </form>
+        </div>
+        <div class="FilterOptions">
+          <select id="filterCategory">
+            <option value="">All Categories</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Urgent">Urgent</option>
+          </select>
+        </div>
+      </section>
+      <section class="DisplayNotes">
+        <div class="displayNotesItems">
+          <h1>title</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+            eligendi animi eum sint aspernatur praesentium itaque? Placeat,
+            libero esse animi quas explicabo tenetur blanditiis ea doloribus
+            quod, dolorum consequuntur ab. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Quas eligendi animi eum sint
+            aspernatur praesentium itaque? Placeat, libero esse animi quas
+            explicabo tenetur blanditiis ea doloribus quod, dolorum consequuntur
+            ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+            eligendi animi eum sint aspernatur praesentium itaque? Placeat,
+            libero esse animi quas explicabo tenetur blanditiis ea doloribus
+            quod, dolorum consequuntur ab.
+          </p>
+          <div class="crudbtn">
+            <button>Edit</button>
+            <button>Detele</button>
+          </div>
+        </div>
+      </section>
+      <section class="AddnewNoteSection active">
+        <div class="popupAddNewNoteBox">
+          <button id="removePopupDisplaybtn">✖️</button>
+          <div class="notedetails">
+            <input type="text" id="GetTitle" placeholder="title" />
+            <select id="noteCategory">
+              <option value="All">All Categories</option>
+              <option value="Work">Work</option>
+              <option value="Personal">Personal</option>
+              <option value="Urgent">Urgent</option>
+            </select>
+          </div>
+          <textarea
+            id="getNote"
+            rows="30"
+            cols="100"
+            placeholder="write here..."
+          ></textarea>
+          <button id="AddNoteBtn">Add</button>
+        </div>
+      </section>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

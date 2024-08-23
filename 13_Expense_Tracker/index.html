@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>expense tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/4eb0924021.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <h1>Accounts</h1>
+      </nav>
+      <main>
+        <div class="getIncomeAndExpense">
+          <p class="ḍateAndtime">22/7/2024</p>
+          <div class="Amountdiv">
+            <label for="getAmount">Amount: &nbsp;</label>
+            <input type="number" id="getAmount" />
+          </div>
+          <div class="Notediv">
+            <label for="getNote">Note: &nbsp;</label>
+            <input type="text" id="getNote" />
+          </div>
+          <div class="Optiondiv">
+            <label for="getIncAndExpOption">Income / Expense: &nbsp;</label>
+            <select id="getIncAndExpOption">
+              <option value="Income">Income</option>
+              <option value="Expense">Expense</option>
+            </select>
+          </div>
+          <button class="AddAmountDetails">Submit</button>
+        </div>
+        <div class="ShowIncomeAndExpense">
+          <div class="totalIncomeAndExpense">
+            <div class="totalIncome Incomeamt">
+              <p>total Income</p>
+              <p id="totalIncAmt">00</p>
+            </div>
+            <div class="totalExpense Expenseamt">
+              <p>total Expense</p>
+              <p id="totalExpAmt">00</p>
+            </div>
+            <div class="totalAmount">
+              <p>total Amount</p>
+              <p id="totalAmt">00</p>
+            </div>
+          </div>
+          <div class="displayIncomeAndExpense">
+            <!-- <div class="dailyincomeAndExpense">
+              <p class="date"></p>
+              <p class="displayNote">this is Income</p>
+              <p class="dailyIncExp Expense">500</p>
+              <button class="trashbtn">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div> -->
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>

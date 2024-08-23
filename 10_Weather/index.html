@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>weather</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/4eb0924021.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <h1>weather</h1>
+        <div class="searchbox">
+          <input type="text" id="searchInput" placeholder="Search City" />
+          <button id="getresult">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+        <div id="error">invalid city name</div>
+        <div class="result" id="hide">
+          <div id="weather_info">
+            <div class="main_info">
+              <img
+                src="images/rain.png"
+                alt="rain image"
+                class="weather_types_img"
+              />
+              <div class="info">
+                <p class="condition_text">Light rain shower</p>
+                <h2 class="temp">27&deg;C</h2>
+                <p class="cityName">Bhiwandi</p>
+              </div>
+            </div>
+            <div class="other_info">
+              <div class="humidity">
+                <img src="/images/humidity.png" alt="humidity" />
+                <div class="humidity_info">
+                  <p id="humidity">452</p>
+                  <p>Humidity</p>
+                </div>
+              </div>
+              <div class="Wind_speed">
+                <img src="/images/wind.png" alt="Wind speed" />
+                <div class="Wind_speed_info">
+                  <p id="Wind_speed">56 km/h</p>
+                  <p>Wind Speed</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="date">
+            00:00:00
+        </div>
+        <div class="time">
+            00:00:00
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
