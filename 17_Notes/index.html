@@ -1,81 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>notes</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <nav>
-          <h1>Notes</h1>
-        </nav>
-      </header>
-      <section class="AddNewNotes">
-        <div class="addNewNoteBtn">
-          <button id="openpopupbox">New Note</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Taking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Notes Taking</h1>
+    </header>
+    
+    <section class="note-input">
+        <textarea id="note-content" placeholder="Write your note here..."></textarea>
+        <button id="add-note">Add Note</button>
+    </section>
+
+    <section class="search-bar">
+        <input type="text" id="search" placeholder="Search notes...">
+    </section>
+
+    <main class="notes-list">
+        <div class="note-item">
+            <p class="note-content">Discuss project requirements and deadlines.</p>
+            <div class="note-actions">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </div>
         </div>
-        <div class="searchBtn">
-          <form action="">
-            <input type="text" id="searchNotes" placeholder="Search..." />
-            <button type="submit">search</button>
-          </form>
+
+        <div class="note-item">
+            <p class="note-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima nulla adipisci expedita, natus fugit magni ea corporis est. Mollitia tempora consequuntur tenetur. Possimus minima quis ratione voluptate minus mollitia velit odit eveniet fugit laboriosam aliquam nemo qui numquam nam deserunt quam beatae voluptas eum corrupti, sit accusamus soluta quasi porro. Tempore, modi totam itaque porro ex in voluptatibus eaque! Doloribus aspernatur rem dignissimos inventore, accusantium nulla exercitationem eos vero esse nisi. Iusto deleniti aut mollitia, quam, nisi dicta sint magnam corrupti commodi vero temporibus voluptatem? Ad beatae, doloribus velit illo facilis alias tempore, deserunt ex exercitationem culpa ab? Maiores, temporibus!</p>
+            <div class="note-actions">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </div>
         </div>
-        <div class="FilterOptions">
-          <select id="filterCategory">
-            <option value="">All Categories</option>
-            <option value="Work">Work</option>
-            <option value="Personal">Personal</option>
-            <option value="Urgent">Urgent</option>
-          </select>
-        </div>
-      </section>
-      <section class="DisplayNotes">
-        <div class="displayNotesItems">
-          <h1>title</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-            eligendi animi eum sint aspernatur praesentium itaque? Placeat,
-            libero esse animi quas explicabo tenetur blanditiis ea doloribus
-            quod, dolorum consequuntur ab. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Quas eligendi animi eum sint
-            aspernatur praesentium itaque? Placeat, libero esse animi quas
-            explicabo tenetur blanditiis ea doloribus quod, dolorum consequuntur
-            ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-            eligendi animi eum sint aspernatur praesentium itaque? Placeat,
-            libero esse animi quas explicabo tenetur blanditiis ea doloribus
-            quod, dolorum consequuntur ab.
-          </p>
-          <div class="crudbtn">
-            <button>Edit</button>
-            <button>Detele</button>
-          </div>
-        </div>
-      </section>
-      <section class="AddnewNoteSection active">
-        <div class="popupAddNewNoteBox">
-          <button id="removePopupDisplaybtn">✖️</button>
-          <div class="notedetails">
-            <input type="text" id="GetTitle" placeholder="title" />
-            <select id="noteCategory">
-              <option value="All">All Categories</option>
-              <option value="Work">Work</option>
-              <option value="Personal">Personal</option>
-              <option value="Urgent">Urgent</option>
-            </select>
-          </div>
-          <textarea
-            id="getNote"
-            rows="30"
-            cols="100"
-            placeholder="write here..."
-          ></textarea>
-          <button id="AddNoteBtn">Add</button>
-        </div>
-      </section>
-    </div>
+    </main>
+
     <script src="script.js"></script>
-  </body>
+</body>
 </html>

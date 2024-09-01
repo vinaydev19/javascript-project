@@ -1,125 +1,156 @@
-const gettaskinput = document.querySelector(".gettaskinput");
-const settaskbtn = document.querySelector(".settaskbtn");
-const isComplateOrNot = document.querySelector("#isComplateOrNot");
-const EditableBtn = document.querySelector(".EditableBtn");
-const deleteBtn = document.querySelector(".deleteBtn");
-const displaytaskbox = document.querySelector(".displaytaskbox");
-const taskinputForm = document.querySelector(".taskinputForm");
-const displaytaskValue = document.querySelector(".displaytaskValue");
-const saveBtn = document.querySelector(".saveBtn");
+document.addEventListener("DOMContentLoaded", () => {
+  let storedTask = JSON.parse(localStorage.getItem("todos"));
 
-const teskArr = {
-  todo: [{}],
-};
+  console.log("Retrieved from localStorage:", storedTask);
 
-console.log(teskArr);
-
-settaskbtn.addEventListener("click", (e) => {
-  const taskValue = gettaskinput.value;
-  e.preventDefault();
-  InputTeskCheck(taskValue);
+  if (storedTask) {
+    taskArr = storedTask;
+    displayTodos();
+    // deletefunc();
+    // editfunc();
+    // checkedOrNot();
+  }
 });
 
-function InputTeskCheck(taskValue) {
-  if (taskValue === "") {
-    alert("plz enter tesk");
+document.getElementById("toggle-filter").addEventListener("click", function () {
+  const filterBar = document.getElementById("filter-bar");
+  if (filterBar.style.display === "flex") {
+    filterBar.style.display = "none";
   } else {
-    console.log(taskValue);
-    console.log(typeof taskValue);
-    addteskfunc(taskValue);
-  }
-}
-
-function addteskfunc(taskValue) {
-  const generateId = Date.now();
-
-  const div = document.createElement("div");
-  div.classList.add("displaytask");
-
-  const inputCheckBox = document.createElement("input");
-  inputCheckBox.setAttribute("type", "checkbox");
-  inputCheckBox.setAttribute("id", "isComplateOrNot");
-  inputCheckBox.dataset.id = generateId;
-
-  const p1 = document.createElement("p");
-  p1.classList.add("displaytaskValue");
-  p1.innerText = taskValue;
-
-  const div2 = document.createElement("div");
-  div2.classList.add("taskeditOrTrash");
-
-  const p2 = document.createElement("p");
-  p2.classList.add("EditableBtn");
-  p2.innerText = `✏️`;
-
-  const p3 = document.createElement("p");
-  p3.classList.add("deleteBtn");
-  p3.innerText = `❌`;
-
-  const p4 = document.createElement("p");
-  p4.classList.add("saveBtn");
-  p4.classList.add("hide");
-  p4.innerText = `📁`;
-
-  div2.appendChild(p2);
-  div2.appendChild(p4);
-  div2.appendChild(p3);
-
-  div.appendChild(inputCheckBox);
-  div.appendChild(p1);
-  div.appendChild(div2);
-
-  displaytaskbox.appendChild(div);
-
-  const addtaskintoArr = teskArr.todo.push({
-    id: generateId,
-    todos: taskValue,
-    isComplateOrNot: false,
-  });
-}
-
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("EditableBtn")) {
-    const taskElement = e.target.closest(".displaytask");
-    console.log(taskElement);
-    const taskId = taskElement.querySelector("#isComplateOrNot").dataset.id;
-    console.log(taskId);
-
-    EditableFunc(taskId, taskElement);
+    filterBar.style.display = "flex";
   }
 });
 
-function EditableFunc(id, taskElement) {
-  const teskValueElement = taskElement.querySelector(".displaytaskValue");
+const addTaskbtn = document.getElementById("add-task");
+const category = document.getElementById("category");
+const newTaskinput = document.getElementById("new-task");
+const taskDate = document.getElementById("task-date");
+const taskList = document.querySelector(".task-list");
+const taskItem = document.querySelector(".task-item");
 
-  const editInput = document.createElement("input");
-  editInput.type = "text";
-  editInput.value = teskValueElement.innerText;
-  editInput.classList.add("editInput");
+let taskArr = [];
 
-  saveBtn.classList.remove("hide");
+addTaskbtn.addEventListener("click", () => {
+  todoValidation();
+  displayTodos();
+});
 
-  EditableBtn.classList.add("hide");
+function todoValidation() {
+  let newTaskinputValue = newTaskinput.value;
+  if (newTaskinputValue == "") {
+    alert("pls enter task");
+    return;
+  }
+  let categoryValue = category.value;
+  if (categoryValue == "") {
+    alert("pls select category");
+    return;
+  }
+  let taskDateValue = taskDate.value;
+  if (taskDateValue == "") {
+    alert("pls enter Date");
+    return;
+  }
 
-  taskElement.replaceChild(editInput, teskValueElement);
+  const Today = new Date().setHours(0, 0, 0, 0);
+  const selectDate = new Date(taskDateValue).setHours(0, 0, 0, 0);
 
-  saveBtn.addEventListener("click", () => {
-    const newTeskValue = editInput.value;
-    if (newTeskValue != "") {
-      const teskupdate = tes
-      kArr.todo.findIndex((task) => task.id === id);
-      teskArr.todo[teskupdate].todos = newTeskValue;
+  console.log(Today);
+  console.log(selectDate);
 
-      teskValueElement.innerText = newTeskValue;
-      taskElement.replaceChild(teskValueElement, editInput);
+  if (selectDate < Today) {
+    alert("pls select date today or future");
+    return;
+  }
 
-      saveBtn.classList.add("hide");
+  taskArr.push({
+    todo: newTaskinputValue,
+    todoCategory: categoryValue,
+    todoDate: taskDateValue,
+    todoComplated: false,
+  });
+  console.log(taskArr);
+}
 
-      EditableBtn.classList.remove("hide");
-    } else {
-      alert("Task cannot be empty");
-    }
+function displayTodos() {
+  taskList.innerHTML = "";
+
+  taskArr.forEach((todo, index) => {
+    taskList.innerHTML += `
+                <div id="${index}" class="task-item">
+              <div class="task-info">
+                <input type="checkbox" ${
+                  todo.todoCompleted ? "checked" : ""
+                } data-index="${index}" class="task-complete"/>
+                <div>
+                  <div class="task-text">${todo.todo}</div>
+                  <div class="task-category">${todo.todoCategory}</div>
+                </div>
+              </div>
+              <div class="task-date">${todo.todoDate}</div>
+              <div class="task-actions">
+                <button data-index="${index}" class="edit">Edit</button>
+                <button data-index="${index}" class="delete">Delete</button>
+              </div>
+            </div>
+          `;
+  });
+
+  checkedOrNot();
+  deletefunc();
+  editfunc();
+  saveTodos();
+
+  //   newTaskinput.value = "";
+  //   category.value = "";
+  //   taskDate.value = "";
+}
+
+function checkedOrNot() {
+  document.querySelectorAll(".task-complete").forEach((checkbox) => {
+    checkbox.addEventListener("change", (e) => {
+      const taskIndex = e.target.getAttribute("data-index");
+      taskArr[taskIndex].todoComplated = e.target.checked;
+      console.log(taskArr);
+      saveTodos();
+    });
   });
 }
 
-function deleteFunc() {}
+function deletefunc() {
+  const deletebtn = document.querySelectorAll(".delete");
+
+  deletebtn.forEach((todo) => {
+    todo.addEventListener("click", (e) => {
+      const taskIndex = e.target.getAttribute("data-index");
+      taskArr.splice(taskIndex, 1);
+      displayTodos();
+      console.log(taskIndex);
+      console.log(`delete`);
+      console.log(taskArr);
+      saveTodos();
+    });
+  });
+}
+
+function editfunc() {
+  const editbtn = document.querySelectorAll(".edit");
+  editbtn.forEach((todo) => {
+    todo.addEventListener("click", (e) => {
+      const taskIndex = e.target.getAttribute("data-index");
+      const task = taskArr[taskIndex];
+
+      newTaskinput.value = task.todo;
+      category.value = task.todoCategory;
+      taskDate.value = task.todoDate;
+
+      taskArr.splice(taskIndex, 1);
+      displayTodos();
+      saveTodos();
+    });
+  });
+}
+
+function saveTodos() {
+  localStorage.setItem("todos", JSON.stringify(taskArr));
+}

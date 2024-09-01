@@ -3,37 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To Do List</title>
+    <title>To-Do List</title>
     <link rel="stylesheet" href="style.css" />
-    <script
-      src="https://kit.fontawesome.com/4eb0924021.js"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
-    <div class="container">
-      <form class="taskinputForm">
-        <input type="text" class="gettaskinput" placeholder="Enter your task" />
-        <input type="submit" value="Add" class="settaskbtn" />
-      </form>
-      <div class="displaytaskbox">
-        <div class="displaytask">
-          <input type="checkbox" id="isComplateOrNot" />
-          <p class="displaytaskValue">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores
-            doloremque enim vero
-          </p>
-          <div class="taskeditOrTrash">
-            <p class="EditableBtn">✏️</p>
-            <p class="saveBtn hide" id="">📁</p>
-            <p class="deleteBtn">❌</p>
+    <header>
+      <h1>Task Manager</h1>
+    </header>
+
+    <section class="task-input">
+      <input type="text" id="new-task" placeholder="What needs to be done?" />
+      <select id="category">
+        <option value="">Category Task</option>
+        <option value="work">Work</option>
+        <option value="personal">Personal</option>
+        <option value="shopping">Shopping</option>
+        <option value="other">Other</option>
+      </select>
+      <input type="date" id="task-date" />
+      <button id="add-task">Add Task</button>
+    </section>
+
+    <section class="filter-toggle">
+      <button id="toggle-filter">Filters</button>
+    </section>
+
+    <section class="filter-bar" id="filter-bar">
+      <input type="text" id="search" placeholder="Search tasks..." />
+      <select id="filter-category">
+        <option value="all">All Categories</option>
+        <option value="work">Work</option>
+        <option value="personal">Personal</option>
+        <option value="shopping">Shopping</option>
+        <option value="other">Other</option>
+      </select>
+      <select id="filter-date">
+        <option value="all">Any Time</option>
+        <option value="today">Today</option>
+        <option value="tomorrow">Tomorrow</option>
+        <option value="this-week">This Week</option>
+        <option value="this-month">This Month</option>
+      </select>
+    </section>
+
+    <main class="task-list">
+      <!-- <div class="task-item">
+        <div class="task-info">
+          <input type="checkbox" />
+          <div>
+            <div class="task-text">Finish project report</div>
+            <div class="task-category">Work</div>
           </div>
         </div>
-      </div>
-    </div>
+        <div class="task-date">Today</div>
+        <div class="task-actions">
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+        </div>
+      </div> -->
+    </main>
+
+    <script src="script.js"></script>
   </body>
-  <script src="script.js"></script>
 </html>
 
-
-<!--  -->

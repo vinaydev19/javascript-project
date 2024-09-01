@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
 let tasks = [];
 const newTask = document.querySelector("#newTask");
 
